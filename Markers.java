@@ -1,11 +1,19 @@
-// Copyright Eric Chauvin 2018 - 2021.
+// Copyright Eric Chauvin 2022.
+
+
+
+// This is licensed under the GNU General
+// Public License (GPL).  It is the
+// same license that Linux has.
+// https://www.gnu.org/licenses/gpl-3.0.html
 
 
 
       // Basic Multilingual Plane
       // C0 Controls and Basic Latin (Basic Latin)
-      //                                 (0000 007F)
-      // C1 Controls and Latin-1 Supplement (0080 00FF)
+      //                               (0000 007F)
+      // C1 Controls and Latin-1 Supplement
+      //                               (0080 00FF)
       // Latin Extended-A (0100 017F)
       // Latin Extended-B (0180 024F)
       // IPA Extensions (0250 02AF)

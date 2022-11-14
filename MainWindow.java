@@ -1,4 +1,4 @@
-// Copyright Eric Chauvin 2019 - 2021.
+// Copyright Eric Chauvin 2022.
 
 
 // This is licensed under the GNU General
@@ -69,7 +69,8 @@ public class MainWindow extends JFrame implements
 
 
 
-  public MainWindow( MainApp useApp, String showText )
+  public MainWindow( MainApp useApp,
+                     String showText )
     {
     super( showText );
 
@@ -107,6 +108,7 @@ public class MainWindow extends JFrame implements
   public void initialize()
     {
     String allTogether =
+             "USGS Web Site Index\n" +
              "Programming by Eric Chauvin.\n" +
              "Version date: " +
              MainApp.versionDate + "\n\n";
@@ -317,18 +319,9 @@ public class MainWindow extends JFrame implements
     menuItem.setFont( mainFont );
     fileMenu.add( menuItem );
 
-    menuItem = new JMenuItem( "Analyze News" );
+    menuItem = new JMenuItem( "Analyze Links" );
     menuItem.setMnemonic( KeyEvent.VK_A );
     menuItem.setActionCommand( "FileAnalyze" );
-    menuItem.addActionListener( this );
-    menuItem.setForeground( Color.white );
-    menuItem.setBackground( Color.black );
-    menuItem.setFont( mainFont );
-    fileMenu.add( menuItem );
-
-    menuItem = new JMenuItem( "Analyze Spanish" );
-    menuItem.setMnemonic( KeyEvent.VK_S );
-    menuItem.setActionCommand( "FileAnalyzeSpanish" );
     menuItem.addActionListener( this );
     menuItem.setForeground( Color.white );
     menuItem.setBackground( Color.black );
@@ -431,10 +424,12 @@ public class MainWindow extends JFrame implements
       webSites.analyze();
       }
 
+    /*
     if( command == "FileAnalyzeSpanish" )
       {
       webSites.analyzeSpanish();
       }
+    */
 
     if( command == "FileCancel" )
       {

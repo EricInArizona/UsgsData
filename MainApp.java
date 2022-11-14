@@ -1,4 +1,4 @@
-// Copyright Eric Chauvin 2020 - 2022.
+// Copyright Eric Chauvin 2022.
 
 
 // This is licensed under the GNU General
@@ -11,10 +11,10 @@
 // USGS Data Project.
 
 // This is being adapted from my News project
-// and so it still looks a lot like the news 
+// and so it still looks a lot like the news
 // project.
 
-// "\\USGSData\\UrlFiles\\"
+// "\\USGSDatabase\\UrlFiles\\"
 
 
 
