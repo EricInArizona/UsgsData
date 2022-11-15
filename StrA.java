@@ -1,8 +1,11 @@
-// Copyright Eric Chauvin 2020 - 2021.
+// Copyright Eric Chauvin 2020 - 2022.
 
 
-// An old saying: "Make it work first, then make
-// it work fast".
+
+// This is licensed under the GNU General
+// Public License (GPL).  It is the
+// same license that Linux has.
+// https://www.gnu.org/licenses/gpl-3.0.html
 
 
 

@@ -1,5 +1,11 @@
-// Copyright Eric Chauvin 2020 - 2021.
+// Copyright Eric Chauvin 2022.
 
+
+
+// This is licensed under the GNU General
+// Public License (GPL).  It is the
+// same license that Linux has.
+// https://www.gnu.org/licenses/gpl-3.0.html
 
 
 
@@ -34,7 +40,7 @@ public class URLParse
     StrA baseHttpS = new StrA( "https://" );
     baseDomain = baseHttpS.concat( baseDomain );
 
-    rawTagBld = new StrABld( 1024 * 4 );
+    rawTagBld = new StrABld( 1024 * 64 );
     setupBadLinkArray();
     }
 
@@ -101,7 +107,8 @@ public class URLParse
 
     if( lastPart > 2 )
       {
-      mApp.showStatusAsync( "Anchor tag lastPart > 2." );
+      mApp.showStatusAsync( 
+                     "Anchor tag lastPart > 2." );
       mApp.showStatusAsync( "text: " + text );
       return false;
       }
@@ -111,9 +118,11 @@ public class URLParse
       linkText = lineParts.getStrAt( 1 );
 
     linkText = linkText.cleanUnicodeField().trim();
-    linkText = HtmlFile.fixAmpersandChars( linkText );
+    linkText = HtmlFile.fixAmpersandChars(
+                                       linkText );
 
-    // mApp.showStatusAsync( "\nlinkText: " + linkText );
+    // mApp.showStatusAsync( "\nlinkText: " +
+    //                          linkText );
 
     StrA insideTag = lineParts.getStrAt( 0 );
 
@@ -123,7 +132,8 @@ public class URLParse
     final int lastAttr = tagAttr.length();
     if( lastAttr == 0 )
       {
-      mApp.showStatusAsync( "URLParse: lastAttr is zero." );
+      mApp.showStatusAsync( 
+                   "URLParse: lastAttr is zero." );
       return false;
       }
 
@@ -149,8 +159,8 @@ public class URLParse
       return false;
 
     // Don't add new Spanish links.
-    if( isSpanish( link ))
-      return false;
+    // if( isSpanish( link ))
+      // return false;
 
     // mApp.showStatusAsync( "Link: " + link );
 
@@ -195,7 +205,8 @@ public class URLParse
       return StrA.Empty;
 
     // if( base.endsWithChar( '/' ))
-      // base = base.substring( 0, base.length() - 2 );
+      // base = base.substring( 0, 
+       //         base.length() - 2 );
 
     StrA result = in;
 
@@ -203,7 +214,8 @@ public class URLParse
     final int lastParam = paramParts.length();
     if( lastParam == 0 )
       {
-      mApp.showStatusAsync( "URLParse: lastParam is zero." );
+      mApp.showStatusAsync( 
+                 "URLParse: lastParam is zero." );
       return StrA.Empty;
       }
 
@@ -226,52 +238,9 @@ public class URLParse
   private void setupBadLinkArray()
     {
     badLinkArray = new StrArray();
-    badLinkArray.append( new StrA( "//radio." ));
-    badLinkArray.append( new StrA( "//video." ));
 
-    badLinkArray.append( new StrA( "/privacy-policy" ));
-
-    badLinkArray.append( new StrA( "obituary" ));
-
-    badLinkArray.append( new StrA(
-                     ".foxnews.com/entertainment/" ));
-
-    badLinkArray.append( new StrA(
-                           "www.foxnews.com/shows" ));
-    badLinkArray.append( new StrA(
-                   "www.foxnews.com/official-polls" ));
-    badLinkArray.append( new StrA(
-                 ".foxbusiness.com/closed-captioning/" ));
-    badLinkArray.append( new StrA(
-                            ".foxnews.com/about/rss/" ));
-    badLinkArray.append( new StrA(
-                      ".foxnews.com/category/media/" ));
-    badLinkArray.append( new StrA(
-                            "help.foxbusiness.com" ));
-    badLinkArray.append( new StrA(
-                          "press.foxbusiness.com/" ));
-    badLinkArray.append( new StrA( "press.foxnews.com/" ));
-    badLinkArray.append( new StrA( ".foxnews.com/rss/" ));
-
-    badLinkArray.append( new StrA( ".foxnews.com/sports/" ));
-
-    badLinkArray.append( new StrA(
-                         ".foxnews.com/newsletters" ));
-    badLinkArray.append( new StrA(
-               ".foxnews.com/accessibility-statement" ));
-    badLinkArray.append( new StrA(
-                              ".foxnews.com/contact" ));
-    badLinkArray.append( new StrA(
-                             "nation.foxnews.com/" ));
-    badLinkArray.append( new StrA(
-                          ".foxnews.com/compliance" ));
-    badLinkArray.append( new StrA(
-                   ".foxbusiness.com/terms-of-use" ));
-    badLinkArray.append( new StrA(
-                             "//www.facebook.com/" ));
-    badLinkArray.append( new StrA( "//twitter.com/" ));
-
-    badLinkArray.append( new StrA( ".foxnews.com/entertainment/" ));
+    // badLinkArray.append( new StrA(
+    //         ".foxnews.com/entertainment/" ));
 
     // badLinkArray.append( new StrA( "" ));
     }
@@ -281,116 +250,16 @@ public class URLParse
   private boolean hasValidDomain( StrA link )
     {
     if( link.containsStrA( new StrA(
-                            "wmicentral.com" )))
+                              ".usgs.gov/" )))
       return true;
 
     if( link.containsStrA( new StrA(
-                            "blogs.imf.org" )))
+                              ".sciencebase.gov" )))
       return true;
 
-    if( link.containsStrA( new StrA(
-    "libertystreeteconomics.newyorkfed." )))
-      return true;
 
-    if( link.containsStrA( new StrA(
-                "krebsonsecurity.com" )))
-      return true;
-
-    // if( link.containsStrA( new StrA( "finance.yahoo.com/" )))
+    // if( isSpanish( link ))
       // return true;
-
-    if( link.containsStrA( new StrA(
-                       "www.ft.com/" )))
-      return true;
-
-    if( link.containsStrA( new StrA(
-                  "news.bitcoin.com/" )))
-      return true;
-
-    if( link.containsStrA( new StrA(
-                       "radiationnetwork.com/" )))
-      return true;
-
-    if( link.containsStrA( new StrA(
-                       "radiationnetwork.net/" )))
-      return true;
-
-    if( link.containsStrA( new StrA(
-                         "mineralab.com/" )))
-      return true;
-
-    if( link.containsStrA( new StrA(
-          "cryptographyengineering.com" )))
-      return true;
-
-    if( link.containsStrA( new StrA(
-          ".iacr.org/" )))
-      return true;
-
-    if( link.containsStrA( new StrA(
-          ".schneier.com/" )))
-      return true;
-
-    if( link.containsStrA( new StrA(
-          "rfc-editor.org" )))
-      return true;
-
-    if( link.containsStrA( new StrA(
-                        ".openssl.org/" )))
-      return true;
-
-    if( link.containsStrA( new StrA( ".usgs.gov/" )))
-      return true;
-
-    if( link.containsStrA( new StrA( "durangoherald.com/" )))
-      return true;
-
-    if( link.containsStrA( new StrA( ".foxnews.com/" )))
-      return true;
-
-    if( link.containsStrA( new StrA( ".foxbusiness.com/" )))
-      return true;
-
-    if( link.containsStrA( new StrA( "sciencenews.org/" )))
-      return true;
-
-    if( link.containsStrA( new StrA( ".dcourier.com/" )))
-      return true;
-
-    if( link.containsStrA( new StrA( "azcentral.com" )))
-      return true;
-
-    if( link.containsStrA( new StrA( "llvm.org/" )))
-      return true;
-
-    if( link.containsStrA( new StrA( "leadvilleherald.com/" )))
-      return true;
-
-    if( link.containsStrA( new StrA(
-                      ".paysonroundup.com/" )))
-      return true;
-
-    if( isSpanish( link ))
-      return true;
-
-    return false;
-    }
-
-
-
-  public static boolean isSpanish( StrA link )
-    {
-    if( link.containsStrA( new StrA( "noticiasya.com" )))
-      return true;
-
-    if( link.containsStrA( new StrA( "diario.mx" )))
-      return true;
-
-    if( link.containsStrA( new StrA( "la-prensa.com.mx" )))
-      return true;
-
-    if( link.containsStrA( new StrA( "milenio.com" )))
-      return true;
 
     return false;
     }
@@ -403,14 +272,15 @@ public class URLParse
     // wa.me is WhatsApp.
     // Messaging app owned by Facebook.
 
-    if( link.containsStrA( new StrA( "https://wa.me/" )))
+    if( link.containsStrA( new StrA(
+                             "https://wa.me/" )))
       return true;
 
     if( link.containsStrA( new StrA( "mailto:" )))
       return true;
 
-    if( link.containsStrA( new StrA( "ftp://" )))
-      return true;
+    // if( link.containsStrA( new StrA( "ftp://" )))
+      // return true;
 
     if( link.containsStrA( new StrA( "sms:" )))
       return true;

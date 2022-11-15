@@ -1,4 +1,11 @@
-// Copyright Eric Chauvin 2020 - 2021.
+// Copyright Eric Chauvin 2022.
+
+
+
+// This is licensed under the GNU General
+// Public License (GPL).  It is the
+// same license that Linux has.
+// https://www.gnu.org/licenses/gpl-3.0.html
 
 
 
@@ -27,10 +34,10 @@ public class WebSites implements ActionListener
     {
     mApp = appToUse;
     StrA fileName = new StrA(
-                      "\\ALang\\UrlDictionary.txt" );
+            "\\UsgsDatabase\\UrlDictionary.txt" );
 
     urlDictionary = new URLFileDictionary( mApp,
-                                            fileName );
+                                     fileName );
     urlDictionary.readFromFile();
     }
 
@@ -49,12 +56,14 @@ public class WebSites implements ActionListener
   public void analyze()
     {
     AnalyzeNewLinks newLinks = new AnalyzeNewLinks(
-                                mApp, urlDictionary );
+                           mApp, urlDictionary );
     Thread aThread = new Thread( newLinks );
     aThread.start();
     }
 
 
+
+/*
   public void analyzeSpanish()
     {
     AnalyzeSpanish spanish = new AnalyzeSpanish(
@@ -62,6 +71,7 @@ public class WebSites implements ActionListener
     Thread aThread = new Thread( spanish );
     aThread.start();
     }
+*/
 
 
   public void cancel()
@@ -95,16 +105,19 @@ public class WebSites implements ActionListener
     String command = event.getActionCommand();
     if( command == null )
       {
-      // mApp.showStatusAsync( "ActionEvent command is null." );
+      // mApp.showStatusAsync(
+               // "ActionEvent command is null." );
       doTimerEvent();
       return;
       }
 
-    // showStatus( "ActionEvent Command is: " + command );
+    // showStatus(
+      //  "ActionEvent Command is: " + command );
     }
     catch( Exception e )
       {
-      mApp.showStatusAsync( "Exception in ActionPerformed()." );
+      mApp.showStatusAsync(
+                "Exception in ActionPerformed()." );
       mApp.showStatusAsync( e.getMessage() );
       }
     }
@@ -116,14 +129,17 @@ public class WebSites implements ActionListener
     StrA urlToGet = urlFifo.getValue();
     if( urlToGet == null )
       {
-      mApp.showStatusAsync( "\n\nNothing in Fifo." );
+      mApp.showStatusAsync(
+                      "\n\nNothing in Fifo." );
       getURLTimer.stop();
       urlDictionary.saveToFile();
       return;
       }
 
-    // mApp.showStatusAsync( "\nurlToGet is:\n" + urlToGet );
-    URLFile uFile = urlDictionary.getValue( urlToGet );
+    // mApp.showStatusAsync(
+        // "\nurlToGet is:\n" + urlToGet );
+    URLFile uFile = urlDictionary.getValue(
+                                      urlToGet );
     if( uFile == null )
       uFile = new URLFile( mApp, urlToGet );
 
@@ -131,8 +147,10 @@ public class WebSites implements ActionListener
     urlDictionary.setValue( urlToGet, uFile );
 
     String fileName = uFile.getFileName().toString();
-    fileName = "\\ALang\\URLFiles\\" + fileName;
-    // mApp.showStatusAsync( "File name: " + fileName );
+    fileName = "\\UsgsDatabase\\URLFiles\\" +
+                                      fileName;
+    // mApp.showStatusAsync( "File name: " +
+    //                               fileName );
     String urlS = urlToGet.toString();
     URLClient urlClient = new URLClient( mApp,
                                  fileName,
@@ -160,13 +178,15 @@ public class WebSites implements ActionListener
 
 
     mApp.showStatusAsync( "\n\n" );
-    // for( int count = 0x100; count <= 0x17F; count++ )
+    // for( int count = 0x100; count <= 0x17F;
+              // count++ )
     for( int count = 161; count <= 255; count++ )
       {
       // Integer.toHexString(n).toUpperCase()
 
       char testC = (char)count;
-      mApp.showStatusAsync( "" + count + ") " + testC );
+      mApp.showStatusAsync( "" + count + ") " +
+                                       testC );
       }
 
     mApp.showStatusAsync( "\n\n" );
@@ -176,145 +196,41 @@ public class WebSites implements ActionListener
 
   public void addURLsToFifo()
     {
-    // Not this: "https://news.google.com/" ));
-
-    // urlFifo.setValue( new StrA(
-     //             "https://finance.yahoo.com/news/" ));
-
-    // urlFifo.setValue( new StrA(
-    //                 "https://www.ft.com/" ));
-
-    // urlFifo.setValue( new StrA(
-    //           "https://news.bitcoin.com/" ));
-
-    // urlFifo.setValue( new StrA(
-    //              "https://www.foxnews.com/" ));
-
+    // Add it to isGoodFullFile() too.
+    // _And_ URLParse.hasValidDomain()
 
     urlFifo.setValue( new StrA(
-                  "https://www.foxbusiness.com/" ));
-
-
-  // Add it to isGoodFullFile() too.
-  // _And_ URLParse.hasValidDomain()
+       "https://www.usgs.gov/" ));
 
     urlFifo.setValue( new StrA(
-     "https://www.sciencenews.org/" ));
-
-    // urlFifo.setValue( new StrA(
-     // "https://www.dcourier.com/" ));
-
-    // urlFifo.setValue( new StrA(
-     // "https://www.paysonroundup.com/" ));
-
-    // urlFifo.setValue( new StrA(
-     // "https://www.paysonroundup.com/news/" ));
-
-    // urlFifo.setValue( new StrA(
-       //           "https://www.azcentral.com/" ));
-
-    // urlFifo.setValue( new StrA(
-    //              "https://llvm.org/" ));
-
-    // urlFifo.setValue( new StrA(
-      // "https://www.mineralab.com/" ));
-
-    // urlFifo.setValue( new StrA(
-      // "https://www.mineralab.net/" ));
-
-    // White Mountain Independent news.
-    // urlFifo.setValue( new StrA(
-       // "https://www.wmicentral.com/" ));
-
-    urlFifo.setValue( new StrA(
-      "https://krebsonsecurity.com/" ));
-
-    // urlFifo.setValue( new StrA(
-      // "https://blog.cryptographyengineering.com/" ));
-
-    urlFifo.setValue( new StrA(
-       "https://blogs.imf.org/" ));
-
-    urlFifo.setValue( new StrA(
-    "https://libertystreeteconomics.newyorkfed.org/" ));
-
-    urlFifo.setValue( new StrA(
-      "https://www.iacr.org/news/" ));
-
-    urlFifo.setValue( new StrA(
-      "https://www.schneier.com/" ));
-
-  urlFifo.setValue( new StrA(
-    "https://www.openssl.org/blog/"
+       "https://www.usgs.gov/products/software"
                                ));
 
-  urlFifo.setValue( new StrA(
-    "https://www.openssl.org/news/vulnerabilities.html"
-                               ));
-
-
-    // It is script?  Or what?
-    // urlFifo.setValue( new StrA(
-      // "https://www.rfc-editor.org/rfc-index.html" ));
-
-
-https://www.usgs.gov/products/software
-  urlFifo.setValue( new StrA(
-    "https://www.usgs.gov/products/software"
-                               ));
-
-
-  urlFifo.setValue( new StrA(
-    "https://www.usgs.gov/news"
-                               ));
-
-
-  urlFifo.setValue( new StrA(
-    "https://www.usgs.gov/news/news-releases"
-                               ));
-
-https://www.usgs.gov/news/technical-announcements
-  urlFifo.setValue( new StrA(
-    "https://www.usgs.gov/news/technical-announcements"
-                               ));
-
-  urlFifo.setValue( new StrA(
-    "https://www.durangoherald.com/categories/local-news/"
-                               ));
-
-  // urlFifo.setValue( new StrA(
-    //  "https://www.durangoherald.com/" ));
+    urlFifo.setValue( new StrA(
+    "https://www.usgs.gov/news" ));
 
 
     urlFifo.setValue( new StrA(
-      "https://www.leadvilleherald.com/" ));
+      "https://www.usgs.gov/news/news-releases"
+                               ));
 
-    // urlFifo.setValue( new StrA(
-      // "https://www.sltrib.com/" ));
+    urlFifo.setValue( new StrA(
+      "https://www.usgs.gov/news/technical-announcements"
+                               ));
 
-    // urlFifo.setValue( new StrA(
-      // "https://www.moabtimes.com/" ));
+    urlFifo.setValue( new StrA(
+      "https://www.sciencebase.gov/catalog/"
+                               ));
 
-    // urlFifo.setValue( new StrA(
-     //             "https://noticiasya.com/el-paso/" ));
-
-    // urlFifo.setValue( new StrA(
-      //         "https://diario.mx/seccion/El_Paso/" ));
-
-    // urlFifo.setValue( new StrA(
-      //            "https://www.la-prensa.com.mx/" ));
-
-    // urlFifo.setValue( new StrA(
-       //           "https://www.milenio.com/" ));
-
-    // addEmptyFilesToFifo();
+    addEmptyFilesToFifo();
     }
 
 
 
   private void addEmptyFilesToFifo()
     {
-    mApp.showStatusAsync( "Adding empty files to Fifo." );
+    mApp.showStatusAsync(
+                 "Adding empty files to Fifo." );
     StrA fileS = urlDictionary.makeKeysValuesStrA();
 
     StrArray linesArray = fileS.splitChar( '\n' );
@@ -328,9 +244,11 @@ https://www.usgs.gov/news/technical-announcements
       StrA fileName = uFile.getFileName();
 
       // mApp.showStatusAsync( "" + line );
-      StrA filePath = new StrA( "\\ALang\\URLFiles\\" );
+      StrA filePath = new StrA(
+                 "\\UsgsDatabase\\URLFiles\\" );
       filePath = filePath.concat( fileName );
-      // mApp.showStatusAsync( "filePath: " + filePath );
+      // mApp.showStatusAsync( "filePath: " +
+             // filePath );
 
       if( !FileUtility.exists( filePath ))
         {
@@ -339,13 +257,15 @@ https://www.usgs.gov/news/technical-announcements
           continue;
 
         howMany++;
-        // 3 seconds times 100 = 300 seconds. 5 Minutes.
+        // 3 seconds times 100 = 300 seconds.
+        // 5 Minutes.
         if( howMany > 10000 )
           break;
 
-        mApp.showStatusAsync( "\nAdding to Fifo: (" +
-                                   howMany + ") " +
-                                   urlToGet );
+        mApp.showStatusAsync(
+                        "\nAdding to Fifo: (" +
+                        howMany + ") " +
+                        urlToGet );
 
         urlFifo.setValue( urlToGet );
         }
@@ -357,24 +277,15 @@ https://www.usgs.gov/news/technical-announcements
   private boolean isGoodFullFile( StrA in )
     {
     if( in.containsStrA( new StrA(
-                      "wmicentral.com" )))
+                      ".usgs.gov" )))
       return true;
 
     if( in.containsStrA( new StrA(
-                      "radiationnetwork.com" )))
+                      ".sciencebase.gov" )))
       return true;
 
-    if( in.containsStrA( new StrA( ".foxnews.com" )))
-      return false;
-
-    if( in.containsStrA( new StrA( ".foxbusiness.com" )))
-      return false;
-
-    if( !URLParse.isSpanish( in ))
-      return false;
-
-    if( in.containsStrA( new StrA( "noticiasya.com/" )))
-      return false;
+    // if( !URLParse.isSpanish( in ))
+      // return false;
 
     return true;
     }

@@ -25,11 +25,12 @@ import javax.swing.SwingUtilities;
 class MainApp implements Runnable
   {
   public static final String versionDate =
-                                 "11/14/2022";
+                                 "11/15/2022";
   private MainWindow mainWin;
   // public ConfigureFile mainConfigFile;
   private String[] argsArray;
   private StrA programDirectory;
+  private StrA dataDirectory;
 
 
 
@@ -70,6 +71,9 @@ class MainApp implements Runnable
     // in that directory.
     programDirectory = new StrA(
                        "\\Eric\\Main\\UsgsData" );
+
+    dataDirectory = new StrA(
+                       "\\UsgsDatabase" );
 
     int length = argsArray.length;
     if( length > 0 )

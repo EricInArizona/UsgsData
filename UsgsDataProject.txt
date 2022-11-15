@@ -4,11 +4,11 @@ projectdirectory	\Eric\Main\UsgsData
 recentfile1	C:\Eric\Main\UsgsData\MainApp.java
 recentfile2	\Eric\Main\Docs\Notes.txt
 recentfile3	\Eric\Main\Website\index.html
-recentfile4	\Eric\Main\UsgsData\BuildProj.bat
-recentfile5	\Eric\Main\UsgsData\RunApp.bat
-recentfile6	\Eric\Main\UsgsData\MainWindow.java
-recentfile7	
-recentfile8	
+recentfile4	\Eric\Main\UsgsData\MainWindow.java
+recentfile5	\Eric\Main\UsgsData\WebSites.java
+recentfile6	\Eric\Main\UsgsData\URLFile.java
+recentfile7	\Eric\Main\UsgsData\URLParse.java
+recentfile8	\Eric\Main\UsgsData\StrA.java
 recentfile9	
 recentfile10	
 recentfile11	
