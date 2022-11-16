@@ -1,4 +1,4 @@
-// Copyright Eric Chauvin 2022.
+// Copyright Eric Chauvin 2020 - 2022.
 
 
 
@@ -254,12 +254,17 @@ public class WebSites implements ActionListener
         {
         StrA urlToGet = uFile.getUrl();
         if( !isGoodFullFile( urlToGet ))
+          {
+          mApp.showStatusAsync(
+                        "\nNot good file: " +
+                        urlToGet );
           continue;
+          }
 
         howMany++;
         // 3 seconds times 100 = 300 seconds.
         // 5 Minutes.
-        if( howMany > 10000 )
+        if( howMany > 1000 )
           break;
 
         mApp.showStatusAsync(

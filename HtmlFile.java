@@ -1,4 +1,11 @@
-// Copyright Eric Chauvin 2020 - 2021.
+// Copyright Eric Chauvin 2020 - 2022.
+
+
+
+// This is licensed under the GNU General
+// Public License (GPL).  It is the
+// same license that Linux has.
+// https://www.gnu.org/licenses/gpl-3.0.html
 
 
 
@@ -16,22 +23,22 @@ public class HtmlFile
 
 
   private static final StrA TagTitleStart = new
-                                      StrA( "title" );
+                                    StrA( "title" );
 
   private static final StrA TagTitleEnd = new
                                       StrA( "/title" );
 
   private static final StrA TagAnchorStart = new
-                                         StrA( "a" );
+                                       StrA( "a" );
 
   private static final StrA TagAnchorEnd = new
-                                         StrA( "/a" );
+                                     StrA( "/a" );
 
   private static final StrA TagHeadStart = new
-                                       StrA( "head" );
+                                  StrA( "head" );
 
   private static final StrA TagHeadEnd = new
-                                       StrA( "/head" );
+                                  StrA( "/head" );
 
 
   private HtmlFile()
@@ -39,10 +46,10 @@ public class HtmlFile
     }
 
 
-  public HtmlFile( MainApp appToUse, URLFileDictionary
-                                   useDictionary,
-                                   StrA baseURL,
-                                   StrA fileNameToUse )
+  public HtmlFile( MainApp appToUse,
+                URLFileDictionary useDictionary,
+                StrA baseURL,
+                StrA fileNameToUse )
     {
     mApp = appToUse;
     inURL = baseURL;

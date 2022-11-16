@@ -1,4 +1,11 @@
-// Copyright Eric Chauvin 2020 - 2021.
+// Copyright Eric Chauvin 2020 - 2022.
+
+
+
+// This is licensed under the GNU General
+// Public License (GPL).  It is the
+// same license that Linux has.
+// https://www.gnu.org/licenses/gpl-3.0.html
 
 
 
@@ -110,13 +117,13 @@ public class URLFileDictionary
         continue;
 
       StrA lines = lineArray[count].
-                                 makeKeysValuesStrA();
+                             makeKeysValuesStrA();
 
       if( lines.length() == 0 )
         continue;
 
       // mApp.showStatusAsync( "At " + count +
-      //                " length: " + lines.length() );
+      //            " length: " + lines.length() );
 
 
       sBld.appendStrA( lines );

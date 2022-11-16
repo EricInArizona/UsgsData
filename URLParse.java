@@ -40,7 +40,7 @@ public class URLParse
     StrA baseHttpS = new StrA( "https://" );
     baseDomain = baseHttpS.concat( baseDomain );
 
-    rawTagBld = new StrABld( 1024 * 64 );
+    rawTagBld = new StrABld( 1024 * 4 );
     setupBadLinkArray();
     }
 
@@ -107,7 +107,7 @@ public class URLParse
 
     if( lastPart > 2 )
       {
-      mApp.showStatusAsync( 
+      mApp.showStatusAsync(
                      "Anchor tag lastPart > 2." );
       mApp.showStatusAsync( "text: " + text );
       return false;
@@ -121,18 +121,19 @@ public class URLParse
     linkText = HtmlFile.fixAmpersandChars(
                                        linkText );
 
-    // mApp.showStatusAsync( "\nlinkText: " +
-    //                          linkText );
+    mApp.showStatusAsync( "\nlinkText: " +
+                                linkText );
 
     StrA insideTag = lineParts.getStrAt( 0 );
 
-    // mApp.showStatusAsync( "insideTag: " + insideTag );
+    // mApp.showStatusAsync( "insideTag: " +
+    //                              insideTag );
 
     StrArray tagAttr = insideTag.splitChar( ' ' );
     final int lastAttr = tagAttr.length();
     if( lastAttr == 0 )
       {
-      mApp.showStatusAsync( 
+      mApp.showStatusAsync(
                    "URLParse: lastAttr is zero." );
       return false;
       }
@@ -156,13 +157,16 @@ public class URLParse
       return false;
 
     if( isBadLink( link ))
+      {
+      // mApp.showStatusAsync( "Bad Link: " + link );
       return false;
+      }
 
     // Don't add new Spanish links.
     // if( isSpanish( link ))
       // return false;
 
-    // mApp.showStatusAsync( "Link: " + link );
+    mApp.showStatusAsync( "Link: " + link );
 
     return true;
     }
@@ -205,7 +209,7 @@ public class URLParse
       return StrA.Empty;
 
     // if( base.endsWithChar( '/' ))
-      // base = base.substring( 0, 
+      // base = base.substring( 0,
        //         base.length() - 2 );
 
     StrA result = in;
@@ -214,7 +218,7 @@ public class URLParse
     final int lastParam = paramParts.length();
     if( lastParam == 0 )
       {
-      mApp.showStatusAsync( 
+      mApp.showStatusAsync(
                  "URLParse: lastParam is zero." );
       return StrA.Empty;
       }
@@ -239,8 +243,15 @@ public class URLParse
     {
     badLinkArray = new StrArray();
 
-    // badLinkArray.append( new StrA(
-    //         ".foxnews.com/entertainment/" ));
+
+    badLinkArray.append( new StrA(
+             ".instagram.com" ));
+
+    badLinkArray.append( new StrA(
+             ".youtube.com" ));
+
+    badLinkArray.append( new StrA(
+             "twitter.com" ));
 
     // badLinkArray.append( new StrA( "" ));
     }
@@ -250,11 +261,16 @@ public class URLParse
   private boolean hasValidDomain( StrA link )
     {
     if( link.containsStrA( new StrA(
-                              ".usgs.gov/" )))
+                              ".usgs.gov" )))
       return true;
 
     if( link.containsStrA( new StrA(
                               ".sciencebase.gov" )))
+      return true;
+
+    // Department of the Interior.
+    if( link.containsStrA( new StrA(
+                              ".doi.gov" )))
       return true;
 
 
@@ -285,9 +301,6 @@ public class URLParse
     if( link.containsStrA( new StrA( "sms:" )))
       return true;
 
-    if( !hasValidDomain( link ))
-      return true;
-
     if( link.endsWith( new StrA( ".pdf" )))
       return true;
 
@@ -298,6 +311,14 @@ public class URLParse
       if( link.containsStrA( text ))
         return true;
 
+      }
+
+    // Do this last.
+    if( !hasValidDomain( link ))
+      {
+      mApp.showStatusAsync(
+                 "Not valid domain: " + link );
+      return true;
       }
 
     return false;

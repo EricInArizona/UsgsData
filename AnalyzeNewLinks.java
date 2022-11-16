@@ -1,5 +1,11 @@
-// Copyright Eric Chauvin 2020 - 2021.
+// Copyright Eric Chauvin 2020 - 2022.
 
+
+
+// This is licensed under the GNU General
+// Public License (GPL).  It is the
+// same license that Linux has.
+// https://www.gnu.org/licenses/gpl-3.0.html
 
 
 
@@ -64,16 +70,19 @@ public class AnalyzeNewLinks implements Runnable
       StrA fileName = uFile.getFileName();
       StrA title = uFile.getTitle();
 
-      // mApp.showStatusAsync( "\nLinks not pulled: " + title );
+      // mApp.showStatusAsync( 
+      //       "\nLinks not pulled: " + title );
       // mApp.showStatusAsync( "" + fileName );
 
       title = HtmlFile.fixAmpersandChars( title );
 
 
       // mApp.showStatusAsync( "" + line );
-      StrA filePath = new StrA( "\\ALang\\URLFiles\\" );
+      StrA filePath = new StrA( 
+                  "\\UsgsDatabase\\URLFiles\\" );
       filePath = filePath.concat( fileName );
-      // mApp.showStatusAsync( "filePath: " + filePath );
+      // mApp.showStatusAsync( "filePath: " +
+      //                            filePath );
 
       if( !FileUtility.exists( filePath ))
         {
@@ -103,11 +112,11 @@ public class AnalyzeNewLinks implements Runnable
 
       hFile.processNewAnchorTags();
 
-      StrA oldTitle = uFile.getTitle();
-      if( oldTitle.length() < 5 )
+      // StrA oldTitle = uFile.getTitle();
+      // if( oldTitle.length() < 5 )
         {
         StrA newTitle = hFile.getTitle();
-        mApp.showStatusAsync( "Old Title: " + oldTitle );
+        // mApp.showStatusAsync( "Old Title: " + oldTitle );
         mApp.showStatusAsync( "New Title: " + newTitle );
         uFile.setTitle( newTitle );
         }
@@ -123,25 +132,21 @@ public class AnalyzeNewLinks implements Runnable
 
     urlDictionary.saveToFile();
 
+/*
     mApp.showStatusAsync( "\n\nSorting...\n\n" );
     titleArray.sort();
     final int lastTitle = titleArray.length();
     StrABld sBld = new StrABld( 1024 * 64 );
-    StrA homeless = new StrA( "homeless" );
-    StrA shelter = new StrA( "shelter" );
     for( int count = 0; count < lastTitle; count++ )
       {
       StrA showS = titleArray.getStrAt( count ).
-                                        toLowerCase();
-      if( !(showS.containsStrA( homeless ) ||
-            showS.containsStrA( shelter ) ))
-        continue;
-
+                                  toLowerCase();
       showS = showS.concat( new StrA( "\n" ));
       sBld.appendStrA( showS );
       }
 
     mApp.showStatusAsync( sBld.toStrA().toString() );
+*/
 
     mApp.showStatusAsync( "\nDone processing." );
     }

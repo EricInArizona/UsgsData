@@ -9,9 +9,9 @@ recentfile5	\Eric\Main\UsgsData\WebSites.java
 recentfile6	\Eric\Main\UsgsData\URLFile.java
 recentfile7	\Eric\Main\UsgsData\URLParse.java
 recentfile8	\Eric\Main\UsgsData\StrA.java
-recentfile9	
-recentfile10	
-recentfile11	
+recentfile9	\Eric\Main\UsgsData\AnalyzeNewLinks.java
+recentfile10	\Eric\Main\UsgsData\URLFileDictionary.java
+recentfile11	\Eric\Main\UsgsData\HtmlFile.java
 recentfile12	
 recentfile13	
 recentfile14	
